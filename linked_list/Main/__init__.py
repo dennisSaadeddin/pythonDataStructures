@@ -1,1 +1,1 @@
-from Main.Node import Node
+from Node import NodeElement

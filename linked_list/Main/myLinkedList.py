@@ -1,14 +1,14 @@
-from Main import Node
+from Node import NodeElement
 
 
-class LinkedList:
+class myLinkedList:
 
     def __init__(self):
         self.head = None
         self.tail = None
 
     def add(self, data):
-        node = Node(data)  # start from the first node
+        node = NodeElement(data)  # start from the first node
 
         if self.head is None:
             self.head = node
@@ -17,26 +17,29 @@ class LinkedList:
             self.tail.next = node
         self.tail = node
 
-    def delete(self, node):
-        temp = node.prev
-        node.prev.next = node.next
-        node.next = temp
+    def delete(self, p):
+        if p is self.head:
+            self.head = p.next
+            p.next = p.prev
+        elif p is self.tail:
+            self.tail = p.prev
+            p.prev.next = p.next
+        else:
+            tmp = p.prev
+            tmp.next = p.next
+            p.next.prev = tmp
 
     def search(self, val):
         temp = self.head
         if temp is not None:
             while temp.next is not None:
                 if temp.data is val:
-                    return True
-                else:
-                    return False
+                    return temp
                 temp = temp.next
             if temp.data is val:
-                return True
-            else:
-                return False
+                return temp
         else:
-            return False
+            return None
 
     def print_value(self):
         temp = self.head
@@ -48,19 +51,31 @@ class LinkedList:
             temp = temp.next
 
 
-myList = LinkedList()
+myList = myLinkedList()
 
 myList.add(1)
 myList.add(2)
 myList.add(3)
+myList.add(4)
+myList.add(5)
+myList.add(6)
+myList.add(7)
 
 myList.print_value()
 
-if myList.search(4) is True:
-    print("We got your value in our list!")
+if myList.search(1) is not None:
+    print("I've got your value in my list!")
 else:
-    print("We haven't found the value in our list.")
+    print("I haven't found the value in my list.")
 
+myList.delete(myList.search(7))
+myList.print_value()
+
+myList.delete(myList.search(1))
+myList.print_value()
+
+myList.delete(myList.search(4))
+myList.print_value()
 
 if __name__ == "__main__":
-    LinkedList()
+    myLinkedList()
