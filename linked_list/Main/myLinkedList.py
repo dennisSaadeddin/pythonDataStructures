@@ -18,16 +18,19 @@ class myLinkedList:
         self.tail = node
 
     def delete(self, p):
-        if p is self.head:
-            self.head = p.next
-            p.next = p.prev
-        elif p is self.tail:
-            self.tail = p.prev
-            p.prev.next = p.next
+        if p is not None:
+            if p is self.head:
+                self.head = p.next
+                p.next = p.prev
+            elif p is self.tail:
+                self.tail = p.prev
+                p.prev.next = p.next
+            else:
+                tmp = p.prev
+                tmp.next = p.next
+                p.next.prev = tmp
         else:
-            tmp = p.prev
-            tmp.next = p.next
-            p.next.prev = tmp
+            print("The list has no elements. There's nothing to be deleted.")
 
     def search(self, val):
         temp = self.head
@@ -70,10 +73,18 @@ else:
 
 myList.delete(myList.search(7))
 myList.print_value()
-
 myList.delete(myList.search(1))
 myList.print_value()
-
+myList.delete(myList.search(4))
+myList.print_value()
+myList.delete(myList.search(5))
+myList.print_value()
+myList.delete(myList.search(3))
+myList.print_value()
+myList.delete(myList.search(2))
+myList.print_value()
+myList.delete(myList.search(6))
+myList.print_value()
 myList.delete(myList.search(4))
 myList.print_value()
 
