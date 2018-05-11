@@ -1,7 +1,7 @@
-from Node import NodeElement
+from linked_list.Node import NodeElement
 
 
-class myLinkedList:
+class MyLinkedList:
 
     def __init__(self):
         self.head = None
@@ -54,7 +54,7 @@ class myLinkedList:
             temp = temp.next
 
 
-myList = myLinkedList()
+myList = MyLinkedList()
 
 myList.add(1)
 myList.add(2)
@@ -89,4 +89,4 @@ myList.delete(myList.search(4))
 myList.print_value()
 
 if __name__ == "__main__":
-    myLinkedList()
+    MyLinkedList()

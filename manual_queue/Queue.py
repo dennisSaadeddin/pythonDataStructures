@@ -1,4 +1,4 @@
-from queue.QueueElem import MyQueueElement
+from manual_queue.QueueElem import MyQueueElement
 
 
 class MyQueue:
